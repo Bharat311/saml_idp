@@ -75,7 +75,6 @@ module SamlIdp
     def response_builder
       ResponseBuilder.new(response_id, issuer_uri, saml_acs_url, saml_request_id, signed_assertion, algorithm)
     end
-    private :response_builder
 
     def assertion_builder
       @assertion_builder ||= AssertionBuilder.new reference_id,

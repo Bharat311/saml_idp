@@ -50,7 +50,7 @@ module SamlIdp
       Saml::XML::Namespaces::AuthnContext::ClassRef::PASSWORD
     end
 
-    def encode_authn_response(principal, opts = {})
+    def saml_response(principal, opts = {})
       response_id = get_saml_response_id
       reference_id = opts[:reference_id] || get_saml_reference_id
       audience_uri = opts[:audience_uri] || saml_request.issuer || saml_acs_url[/^(.*?\/\/.*?\/)/, 1]
@@ -76,7 +76,7 @@ module SamlIdp
         encryption_opts,
         session_expiry,
         signed_message_opts
-      ).build
+      )
     end
 
     def encode_logout_response(principal, opts = {})
